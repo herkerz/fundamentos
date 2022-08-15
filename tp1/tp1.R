@@ -206,3 +206,8 @@ fviz_pca_biplot(pca_cor,label="all",habillage =df$Country) +
 
 biplot_cor <- fviz_pca_biplot(pca_cor)+ labs(title="Biplot PCA Matriz de Covarianzas")
 
+
+######################################
+a <- prcomp(df_numeric,scale=T)
+fviz_pca_biplot(a,repel=T) +
+  labs(title= "PCA Biplot utilizando Matriz de Correlaciones")
