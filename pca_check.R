@@ -7,7 +7,7 @@ library(faux)
 df <- rnorm_multi( n = 10000,
                    mu= c(0,200),
                    sd = c(1,3),
-                   r= 0,
+                   r= 0.7 ,
                    varnames=c("A","B"),
                    empirical=FALSE)
 
