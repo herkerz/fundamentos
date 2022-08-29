@@ -12,6 +12,7 @@ library(grid)
 library(gridExtra)
 
 
+
 load("C:/Users/hgker/Desktop/master_ds/fundamentos_r/tp3/acath.sav")
 
 
@@ -213,10 +214,10 @@ grid.arrange(tableGrob(summary(confusion,
 ######################################## ANOVA
 
 
-caseros = c(11,14,7,15,11,13,11,16,0,5,
+caseros = c(11,14,7,15,11,13,11,16,10,15,
             18,12,9,9,10,10,15,10,14,10,
-            10,12,14,12,15,7,13,6,0,15,
-            20,0,13,10,6,14,8,10,8,11)
+            10,12,14,12,15,7,13,6,10,15,
+            20,10,13,10,6,14,8,10,8,11)
 
 santos_lugares = c(13,10,12,7,5,10,10,16,9,7,
                    7,2,6,9,9,8,8,10,3,6,
@@ -260,6 +261,7 @@ anova_test <- aov(frecuencia_asistencia~localidad)
 ## VALIDACION MODELO
 shapiro.test(anova_test$residuals)
 
+library(ggfortify)
 fig_2 <-autoplot(anova_test,which=1:3, ncol = 3)
 grid.arrange(grobs = fig_2@plots,
              top=textGrob("Validacion del Modelo ANOVA", 
@@ -321,7 +323,7 @@ modelo_arima <- auto.arima(nottem_train,
 
 summary(modelo_arima)
 
-forecast_temp<- forecast(modelo_arima, 
+forecast_temp<- forecast::forecast(modelo_arima, 
                          h =12)
 
 
